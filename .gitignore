@@ -1,3 +1,6 @@
 .idea
 *.iml
 *.bak
+googlemaps-streetview/target/
+googlemaps-streetview-demo/target/
+googlemaps-streetview-demo/src/main/webapp/VAADIN/
