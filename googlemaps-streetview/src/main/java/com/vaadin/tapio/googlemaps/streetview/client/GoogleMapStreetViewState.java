@@ -1,6 +1,7 @@
 package com.vaadin.tapio.googlemaps.streetview.client;
 
 import com.vaadin.shared.communication.SharedState;
+import com.vaadin.tapio.googlemaps.client.LatLon;
 
 /**
  * The state object for Google Maps Add-On for Vaadin Street View Extension. The
@@ -23,4 +24,6 @@ public class GoogleMapStreetViewState extends SharedState {
      * The pitch (up-down) of the street view overlay in degrees.
      */
     public int povPitch = 0;
+
+    public LatLon position = null;
 }

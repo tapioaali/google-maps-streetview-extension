@@ -11,4 +11,6 @@ public interface GoogleMapStreetViewListener {
     void visibilityChanged(boolean visible);
 
     void positionChanged(LatLon position);
+
+    void povChanged(int heading, int pitch, int zoom);
 }

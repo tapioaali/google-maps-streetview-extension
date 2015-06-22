@@ -1,14 +1,15 @@
 package com.vaadin.tapio.googlemaps.streetview;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import com.vaadin.server.AbstractExtension;
 import com.vaadin.tapio.googlemaps.GoogleMap;
 import com.vaadin.tapio.googlemaps.client.LatLon;
+import com.vaadin.tapio.googlemaps.client.events.MapMoveListener;
 import com.vaadin.tapio.googlemaps.streetview.client.GoogleMapStreetViewRpc;
 import com.vaadin.tapio.googlemaps.streetview.client.GoogleMapStreetViewState;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * An extension that enables server-side controlling of street view functionality
@@ -50,6 +51,13 @@ public class GoogleMapStreetView extends AbstractExtension {
                 listener.positionChanged(position);
             }
         }
+
+        @Override
+        public void povChanged(int heading, int pitch, int zoom) {
+            for (GoogleMapStreetViewListener listener : listeners) {
+                listener.povChanged(heading, pitch, zoom);
+            }
+        }
     };
 
     /**
@@ -63,6 +71,16 @@ public class GoogleMapStreetView extends AbstractExtension {
         extend(map);
 
         registerRpc(rpc);
+
+        getState().position = map.getCenter();
+
+        map.addMapMoveListener(new MapMoveListener() {
+            @Override
+            public void mapMoved(int zoomLevel, LatLon center,
+                LatLon boundsNE, LatLon boundsSW) {
+                getState().position = center;
+            }
+        });
     }
 
     /**

@@ -12,4 +12,6 @@ public interface GoogleMapStreetViewRpc extends ServerRpc {
     void positionChanged(LatLon newPosition);
 
     void visibilityChanged(boolean visible);
+
+    void povChanged(int heading, int pitch, int zoom);
 }
