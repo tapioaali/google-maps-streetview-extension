@@ -2,17 +2,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <parent>
-        <groupId>com.vaadin.tapio</groupId>
-        <artifactId>googlemaps-streetview-root</artifactId>
-        <version>0.1</version>
-    </parent>
-
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.vaadin.tapio</groupId>
     <artifactId>googlemaps-streetview-demo</artifactId>
+    <version>0.1.1</version>
     <packaging>war</packaging>
-    <version>${project.parent.version}</version>
     <name>Street View Extension for GoogleMaps Add-on Demo</name>
 
     <properties>
@@ -28,12 +22,26 @@
         <maven-clean-plugin.version>2.6.1</maven-clean-plugin.version>
         <maven-war-plugin.version>2.6</maven-war-plugin.version>
         <jetty-maven-plugin.version>9.3.0.M2</jetty-maven-plugin.version>
+        <m2e-lifecycle-mapping.version>1.0.0</m2e-lifecycle-mapping.version>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.vaadin</groupId>
+                <artifactId>vaadin-bom</artifactId>
+                <version>${vaadin.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
             <groupId>com.vaadin.tapio</groupId>
             <artifactId>googlemaps-streetview</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>com.vaadin</groupId>
@@ -46,6 +54,7 @@
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
+            <version>${javax.servlet-api.version}</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
@@ -55,6 +64,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <source>${project.source.version}</source>
                     <target>${project.source.version}</target>
@@ -62,6 +72,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-clean-plugin</artifactId>
+                <version>${maven-clean-plugin.version}</version>
                 <configuration>
                     <filesets>
                         <fileset>
@@ -79,6 +90,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
+                <version>${maven-war-plugin.version}</version>
                 <configuration>
                     <packagingExcludes>
                         **/VAADIN/gwt-unitCache/**,
@@ -97,6 +109,7 @@
             <plugin>
                 <groupId>com.vaadin</groupId>
                 <artifactId>vaadin-maven-plugin</artifactId>
+                <version>${vaadin.plugin.version}</version>
                 <configuration>
                     <extraJvmArgs>-Xmx512M -Xss1024k</extraJvmArgs>
                     <webappDirectory>
@@ -127,6 +140,7 @@
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
+                <version>${jetty-maven-plugin.version}</version>
                 <configuration>
                     <webApp>
                         <contextPath>/</contextPath>
@@ -139,6 +153,7 @@
                 <plugin>
                     <groupId>org.eclipse.m2e</groupId>
                     <artifactId>lifecycle-mapping</artifactId>
+                    <version>${m2e-lifecycle-mapping.version}</version>
                     <configuration>
                         <lifecycleMappingMetadata>
                             <pluginExecutions>
