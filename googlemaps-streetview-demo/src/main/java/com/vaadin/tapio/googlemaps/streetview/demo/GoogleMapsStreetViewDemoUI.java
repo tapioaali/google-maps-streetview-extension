@@ -80,13 +80,13 @@ public class GoogleMapsStreetViewDemoUI extends UI {
     }
 
     private void initMapAndStreetView() {
-        googleMap = new GoogleMap(null, null, null);
+        GoogleMap googleMap = new GoogleMap(null, null, null);
         googleMap.setCenter(new LatLon(60.44875000000000, 22.27702299999999));
         googleMap.setZoom(10);
         googleMap.setSizeFull();
         mapLayout.addComponent(googleMap);
 
-        streetView = new GoogleMapStreetView(googleMap);
+        GoogleMapStreetView streetView = new GoogleMapStreetView(googleMap);
         streetView.addStreetViewListener(new GoogleMapStreetViewListener() {
 
             @Override
