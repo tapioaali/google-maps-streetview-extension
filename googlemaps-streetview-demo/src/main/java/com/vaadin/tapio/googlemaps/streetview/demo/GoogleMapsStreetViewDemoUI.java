@@ -86,13 +86,13 @@ public class GoogleMapsStreetViewDemoUI extends UI {
         googleMap.setSizeFull();
         mapLayout.addComponent(googleMap);
 
-        GoogleMapStreetView streetView = new GoogleMapStreetView(googleMap);
+        streetView = new GoogleMapStreetView(googleMap);
         streetView.addStreetViewListener(new GoogleMapStreetViewListener() {
 
             @Override
             public void visibilityChanged(boolean visible) {
                 String logText = "StreetView visible: "
-                    + String.valueOf(visible);
+                        + String.valueOf(visible);
                 logLayout.addComponent(new Label(logText), 0);
 
             }
@@ -100,8 +100,8 @@ public class GoogleMapsStreetViewDemoUI extends UI {
             @Override
             public void positionChanged(LatLon position) {
                 String logText = String.format(
-                    "New position with lat: %.14f, lon: %.14f",
-                    position.getLat(), position.getLon());
+                        "New position with lat: %.14f, lon: %.14f",
+                        position.getLat(), position.getLon());
                 logLayout.addComponent(new Label(logText), 0);
 
             }
@@ -109,8 +109,8 @@ public class GoogleMapsStreetViewDemoUI extends UI {
             @Override
             public void povChanged(int heading, int pitch, int zoom) {
                 String logText = String.format(
-                    "New POV with heading: %d°, pitch: %d°, zoom %d",
-                    heading, pitch, zoom);
+                        "New POV with heading: %d°, pitch: %d°, zoom %d",
+                        heading, pitch, zoom);
                 logLayout.addComponent(new Label(logText), 0);
             }
         });
@@ -118,35 +118,35 @@ public class GoogleMapsStreetViewDemoUI extends UI {
 
     private void createButtons() {
         buttonLayout.addComponent(new Button("Show/hide street view",
-            new Button.ClickListener() {
-                @Override
-                public void buttonClick(ClickEvent event) {
-                    streetView.setVisible(!streetView.isVisible());
-                }
-            }));
+                new Button.ClickListener() {
+                    @Override
+                    public void buttonClick(ClickEvent event) {
+                        streetView.setVisible(!streetView.isVisible());
+                    }
+                }));
 
         buttonLayout.addComponent(new Button("Zoom to 3",
-            new Button.ClickListener() {
-                @Override
-                public void buttonClick(ClickEvent event) {
-                    streetView.setPovZoom(3);
-                }
-            }));
+                new Button.ClickListener() {
+                    @Override
+                    public void buttonClick(ClickEvent event) {
+                        streetView.setPovZoom(3);
+                    }
+                }));
 
         buttonLayout.addComponent(new Button("Heading to 45°",
-            new Button.ClickListener() {
-                @Override
-                public void buttonClick(ClickEvent event) {
-                    streetView.setPovHeading(45);
-                }
-            }));
+                new Button.ClickListener() {
+                    @Override
+                    public void buttonClick(ClickEvent event) {
+                        streetView.setPovHeading(45);
+                    }
+                }));
 
         buttonLayout.addComponent(new Button("Pitch to -30°",
-            new Button.ClickListener() {
-                @Override
-                public void buttonClick(ClickEvent event) {
-                    streetView.setPovHeading(-30);
-                }
-            }));
+                new Button.ClickListener() {
+                    @Override
+                    public void buttonClick(ClickEvent event) {
+                        streetView.setPovHeading(-30);
+                    }
+                }));
     }
 }
