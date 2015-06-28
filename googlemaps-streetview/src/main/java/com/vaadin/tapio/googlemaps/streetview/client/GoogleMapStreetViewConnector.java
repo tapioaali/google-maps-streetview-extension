@@ -28,24 +28,29 @@ import com.vaadin.tapio.googlemaps.streetview.GoogleMapStreetView;
  */
 @Connect(GoogleMapStreetView.class)
 public class GoogleMapStreetViewConnector extends AbstractExtensionConnector
-    implements StateChangeHandler {
+        implements StateChangeHandler {
 
     protected StreetViewPanoramaImpl streetView;
 
     protected GoogleMapStreetViewRpc rpc = RpcProxy.create(
-        GoogleMapStreetViewRpc.class, this);
+            GoogleMapStreetViewRpc.class, this);
 
     @Override
     protected void extend(ServerConnector target) {
         GoogleMapConnector connector = (GoogleMapConnector) target;
         connector.addInitListener(new GoogleMapInitListener() {
             @Override
-            public void googleMapInitiated(MapWidget map) {
+            public void mapWidgetInitiated(MapWidget map) {
                 streetView = map.getStreetView();
                 addChangeHandlers();
                 updateFromStateObject(true);
             }
-        });
+
+            @Override
+            public void mapsApiLoaded() {
+                //NOP
+            }
+c         });
     }
 
     protected void addChangeHandlers() {
@@ -66,7 +71,7 @@ public class GoogleMapStreetViewConnector extends AbstractExtensionConnector
             public void onEvent(PositionChangeMapEvent event) {
                 LatLng position = streetView.getPosition();
                 LatLon newPos = new LatLon(position.getLatitude(), position
-                    .getLongitude());
+                        .getLongitude());
                 rpc.positionChanged(newPos);
             }
         });
@@ -94,15 +99,15 @@ public class GoogleMapStreetViewConnector extends AbstractExtensionConnector
         }
 
         LatLng pos = LatLng.newInstance(getState().position.getLat(),
-            getState().position.getLon());
+                getState().position.getLon());
         if (!pos.equals(streetView.getPosition())) {
             streetView.setPosition(pos);
         }
 
         StreetViewPov pov = streetView.getPov();
         if ((pov.getHeading() != getState().povHeading
-            || pov.getPitch() != getState().povPitch
-            || pov.getZoom() != getState().povZoom) || force) {
+                || pov.getPitch() != getState().povPitch
+                || pov.getZoom() != getState().povZoom) || force) {
             pov = StreetViewPov.newInstance();
             pov.setHeading(getState().povHeading);
             pov.setPitch(getState().povPitch);
