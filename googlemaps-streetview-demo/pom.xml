@@ -5,12 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.vaadin.tapio</groupId>
     <artifactId>googlemaps-streetview-demo</artifactId>
-    <version>0.1.1</version>
+    <version>0.1.2</version>
     <packaging>war</packaging>
     <name>Street View Extension for GoogleMaps Add-on Demo</name>
 
     <properties>
-        <vaadin.version>7.4.8</vaadin.version>
+        <vaadin.version>7.5.0</vaadin.version>
         <vaadin.plugin.version>${vaadin.version}</vaadin.plugin.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
