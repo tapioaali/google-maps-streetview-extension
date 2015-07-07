@@ -50,7 +50,7 @@ public class GoogleMapStreetViewConnector extends AbstractExtensionConnector
             public void mapsApiLoaded() {
                 //NOP
             }
-c         });
+        });
     }
 
     protected void addChangeHandlers() {
