@@ -145,7 +145,7 @@ public class GoogleMapsStreetViewDemoUI extends UI {
                 new Button.ClickListener() {
                     @Override
                     public void buttonClick(ClickEvent event) {
-                        streetView.setPovHeading(-30);
+                        streetView.setPovPitch(-30);
                     }
                 }));
     }
