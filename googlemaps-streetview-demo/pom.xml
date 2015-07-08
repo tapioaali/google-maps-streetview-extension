@@ -29,8 +29,20 @@
         <repository>
             <id>vaadin-addons</id>
             <url>http://maven.vaadin.com/vaadin-addons</url>
-        </repository> 
-    </repositories>     
+        </repository>
+        <repository>
+            <id>vaadin-snapshots</id>
+            <url>
+                http://oss.sonatype.org/content/repositories/vaadin-snapshots/
+            </url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>   
 
     <dependencyManagement>
         <dependencies>
