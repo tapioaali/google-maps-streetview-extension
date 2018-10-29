@@ -1,3 +1,6 @@
+[![Published on Vaadin  Directory](https://img.shields.io/badge/Vaadin%20Directory-published-00b4f0.svg)](https://vaadin.com/directory/component/street-view-extension-for-googlemaps-add-on)
+[![Stars on Vaadin Directory](https://img.shields.io/vaadin-directory/star/street-view-extension-for-googlemaps-add-on.svg)](https://vaadin.com/directory/component/street-view-extension-for-googlemaps-add-on)
+
 # Street View Extension for GoogleMaps Add-on for Vaadin 7
 
 The extension adds server-side controls for street view functionality of Google Maps.
